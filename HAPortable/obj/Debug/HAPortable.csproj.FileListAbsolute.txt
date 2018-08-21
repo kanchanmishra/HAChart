@@ -1,0 +1,17 @@
+/Users/mishk/Projects/HAChartExample/HAPortable/bin/Debug/HAPortable.dll
+/Users/mishk/Projects/HAChartExample/HAPortable/bin/Debug/HAPortable.pdb
+/Users/mishk/Projects/HAChartExample/HAPortable/bin/Debug/Newtonsoft.Json.dll
+/Users/mishk/Projects/HAChartExample/HAPortable/bin/Debug/Newtonsoft.Json.xml
+/Users/mishk/Projects/HAChartExample/HAPortable/obj/Debug/HAPortable.csproj.CoreCompileInputs.cache
+/Users/mishk/Projects/HAChartExample/HAPortable/obj/Debug/HAPortable.dll
+/Users/mishk/Projects/HAChartExample/HAPortable/obj/Debug/HAPortable.pdb
+/Users/mishk/Projects/HAChartExample/HAPortable/obj/Debug/HAPortable.csprojResolveAssemblyReference.cache
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAPortable\bin\Debug\HAPortable.dll
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAPortable\bin\Debug\HAPortable.pdb
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAPortable\bin\Debug\Newtonsoft.Json.dll
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAPortable\bin\Debug\Newtonsoft.Json.xml
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAPortable\obj\Debug\HAPortable.csproj.CoreCompileInputs.cache
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAPortable\obj\Debug\HAPortable.csproj.CopyComplete
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAPortable\obj\Debug\HAPortable.dll
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAPortable\obj\Debug\HAPortable.pdb
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAPortable\obj\Debug\HAPortable.csprojResolveAssemblyReference.cache

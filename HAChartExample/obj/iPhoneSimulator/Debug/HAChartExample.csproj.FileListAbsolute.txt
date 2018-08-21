@@ -1,0 +1,16 @@
+/Users/mishk/Projects/HAChartExample/HAChartExample/bin/iPhoneSimulator/Debug/HAChartExample.exe
+/Users/mishk/Projects/HAChartExample/HAChartExample/bin/iPhoneSimulator/Debug/HAChartExample.pdb
+/Users/mishk/Projects/HAChartExample/HAChartExample/bin/iPhoneSimulator/Debug/HAPortable.dll
+/Users/mishk/Projects/HAChartExample/HAChartExample/bin/iPhoneSimulator/Debug/Newtonsoft.Json.dll
+/Users/mishk/Projects/HAChartExample/HAChartExample/bin/iPhoneSimulator/Debug/HAPortable.pdb
+/Users/mishk/Projects/HAChartExample/HAChartExample/bin/iPhoneSimulator/Debug/Newtonsoft.Json.xml
+/Users/mishk/Projects/HAChartExample/HAChartExample/obj/iPhoneSimulator/Debug/device-builds/iphone10.3-11.3/ibtool/_BundleResourceWithLogicalName.items
+/Users/mishk/Projects/HAChartExample/HAChartExample/obj/iPhoneSimulator/Debug/device-builds/iphone10.3-11.3/actool/_PartialAppManifest.items
+/Users/mishk/Projects/HAChartExample/HAChartExample/obj/iPhoneSimulator/Debug/device-builds/iphone10.3-11.3/actool/_BundleResourceWithLogicalName.items
+/Users/mishk/Projects/HAChartExample/HAChartExample/obj/iPhoneSimulator/Debug/device-builds/iphone10.3-11.3/coremlc/_PartialAppManifest.items
+/Users/mishk/Projects/HAChartExample/HAChartExample/obj/iPhoneSimulator/Debug/device-builds/iphone10.3-11.3/coremlc/_BundleResourceWithLogicalName.items
+/Users/mishk/Projects/HAChartExample/HAChartExample/obj/iPhoneSimulator/Debug/device-builds/iphone10.3-11.3/optimized/
+/Users/mishk/Projects/HAChartExample/HAChartExample/obj/iPhoneSimulator/Debug/HAChartExample.csproj.CoreCompileInputs.cache
+/Users/mishk/Projects/HAChartExample/HAChartExample/obj/iPhoneSimulator/Debug/HAChartExample.exe
+/Users/mishk/Projects/HAChartExample/HAChartExample/obj/iPhoneSimulator/Debug/HAChartExample.pdb
+/Users/mishk/Projects/HAChartExample/HAChartExample/obj/iPhoneSimulator/Debug/HAChartExample.csprojResolveAssemblyReference.cache

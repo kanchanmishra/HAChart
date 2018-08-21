@@ -1,0 +1,61 @@
+{
+  "graphs":
+                  {"body_composition":
+                                        {"body_fat":
+                                                              {"historic":
+                                                                    {"name":"graph_441820_1896_708366_c4cdeea5cc750ed2d803e268a10ca959.png","report_question_name":"body_fat","graph":"BupaLineChart","latest_value":"54",
+                                                                    "axes":
+                                                                            {"x":{"name":"TODO","scale":true,"labels":false,"major":1},
+                                                                            "y":{"name":"TODO","labels":true,"scale":true,"major":9,"minor":null}},
+                                                                    "ranges":
+                                                                            {"y":
+                                                                                  [{"name":"Low Fat","min":"4.0000","max":"9.0000","color":"d81e05"},
+                                                                                    {"name":"Below Average","min":"9.0000","max":"14.0000","color":"ef8900"},
+                                                                                    {"name":"Desirable","min":"14.0000","max":"20.0000","color":"007a3d"},
+                                                                                    {"name":"Above Average","min":"20.0000","max":"31.0000","color":"ef8900"},
+                                                                                    {"name":"High","min":"31.0000","max":"42.0000","color":"d81e05"}],
+                                                                              "x":
+                                                                                    [{"name":"Visits","min":-0.9,"max":1}]},
+                                                                    "data":
+                                                                            [{"x":0,"y":"20.1","label":"(20.1)"},
+                                                                              {"x":1,"y":"54","label":"(54)"}],
+                                                                    "annotations":
+                                                                            [{"label":"Low Fat","text":"You will see that your current body fat percentage is below average.  This may be due to XXXXX.  Make sure that you eat a healthy balanced diet.","is_value_annotation":0},
+                                                                              {"label":"Below Average","text":"You will see that your current body fat percentage is below average.  This may be due to XXXXX.  Make sure that you eat a healthy balanced diet.","is_value_annotation":0},
+                                                                              {"label":"Desirable","text":"Your body fat percentage currently falls within the ideal range.  This is very good.","is_value_annotation":0},
+                                                                              {"label":"Above Average","text":"Your level of body fat is currently slightly above the ideal.  If you increase your activity levels or lose some weight, you should be able to reduce this.","is_value_annotation":0},
+                                                                              {"label":"High","text":"You currently have a high body fat percentage.  This can increase your chance of ill health and therefore it is important that you try to reduce this by increasing your level of exercise and losing some weight.","is_value_annotation":0},
+                                                                              {"label":"Custom","text":"","is_value_annotation":1}],
+                                                                    "data_source_form_question_version_id":"1896",
+                                                                    "type_of_graph":1,
+                                                                    "legend":["2012","2018"],
+                                                                    "annotation":"<p><\/p>"}},
+                                              "bmi":
+                                                                  {"historic":
+                                                                              {"name":"graph_441820_1891_708366_3db60387fd923d6cfcad8ebfbbfe53ec.png","report_question_name":"bmi","graph":"BupaLineChart","latest_value":"22.7",
+                                                                              "axes":
+                                                                                      {"x":{"name":"TODO","scale":true,"labels":false,"major":1},
+                                                                                      "y":{"name":"TODO","labels":true,"scale":true,"major":8,"minor":null}},
+                                                                              "ranges":
+                                                                                      {"y":
+                                                                                          [{"name":"Underweight","min":"13.0000","max":"18.5000","color":"ef8900"},
+                                                                                            {"name":"Normal","min":"18.5000","max":"25.0000","color":"007a3d"},
+                                                                                            {"name":"Overweight","min":"25.0000","max":"30.0000","color":"ef8900"},
+                                                                                            {"name":"Obese","min":"30.0000","max":"40.0000","color":"d81e05"}]
+                                                                                      ,"x":
+                                                                                          [{"name":"Visits","min":-0.9,"max":1}]},
+                                                                              "data":
+                                                                                      [{"x":0,"y":"27","label":"(27)"},
+                                                                                        {"x":1,"y":"22.7","label":"(22.7)"}],
+                                                                              "annotations":
+                                                                                          [{"label":"Underweight","text":"Your BMI value is lower than recommended.  It would be sensible to ensure that you eat a balanced diet and regularly monitor your weight.","is_value_annotation":0},
+                                                                                            {"label":"Normal","text":"Your body mass index (BMI) falls within the normal range.","is_value_annotation":1},
+                                                                                            {"label":"Overweight","text":"As you will note, your BMI value is slightly higher than recommended.  It would be sensible to look at your dietary habits and the amount of physical activity you take as reducing your BMI can help prevent ill-health.","is_value_annotation":0},
+                                                                                            {"label":"Obese","text":"As you will note, your BMI value is significantly higher than recommended.  It would be sensible to look at your dietary habits and the amount of physical activity you take as reducing your BMI can help prevent ill-health.","is_value_annotation":0},
+                                                                                            {"label":"Custom","text":"","is_value_annotation":0}],
+                                                                              "data_source_form_question_version_id":"1891",
+                                                                              "type_of_graph":1,
+                                                                              "legend":["2012","2018"],
+                                                                              "annotation":"<p>Your body mass index (BMI) falls within the normal range.<\/p>"}}},
+
+}

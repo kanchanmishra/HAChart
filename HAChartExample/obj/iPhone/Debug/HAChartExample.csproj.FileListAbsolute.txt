@@ -1,0 +1,17 @@
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAChartExample\bin\iPhone\Debug\HAChartExample.exe
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAChartExample\bin\iPhone\Debug\HAChartExample.pdb
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAChartExample\bin\iPhone\Debug\HAPortable.dll
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAChartExample\bin\iPhone\Debug\Newtonsoft.Json.dll
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAChartExample\bin\iPhone\Debug\HAPortable.pdb
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAChartExample\bin\iPhone\Debug\Newtonsoft.Json.xml
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAChartExample\obj\iPhone\Debug\ibtool\_BundleResourceWithLogicalName.items
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAChartExample\obj\iPhone\Debug\actool\_PartialAppManifest.items
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAChartExample\obj\iPhone\Debug\actool\_BundleResourceWithLogicalName.items
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAChartExample\obj\iPhone\Debug\coremlc\_PartialAppManifest.items
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAChartExample\obj\iPhone\Debug\coremlc\_BundleResourceWithLogicalName.items
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAChartExample\obj\iPhone\Debug\optimized\
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAChartExample\obj\iPhone\Debug\HAChartExample.csprojResolveAssemblyReference.cache
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAChartExample\obj\iPhone\Debug\HAChartExample.csproj.CoreCompileInputs.cache
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAChartExample\obj\iPhone\Debug\HAChartExample.csproj.CopyComplete
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAChartExample\obj\iPhone\Debug\HAChartExample.exe
+C:\Xamarin\Projects\Android\HAChartExample\HAChartExample\HAChartExample\obj\iPhone\Debug\HAChartExample.pdb

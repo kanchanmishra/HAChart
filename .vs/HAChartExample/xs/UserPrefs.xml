@@ -1,0 +1,44 @@
+﻿<Properties StartupConfiguration="{ECF7E824-80C4-4AF5-8C4F-086CC0B26F04}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HAChartDroid/MainActivity.cs">
+    <Files>
+      <File FileName="HAChartDroid/Charts/LineStripeChart.cs" Line="27" Column="34" />
+      <File FileName="HAChartExample/Charts/LineStripeChart_iOS.cs" Line="62" Column="58" />
+      <File FileName="HAChartExample/ViewController.cs" Line="22" Column="13" />
+      <File FileName="HAChartExample/Main.storyboard" />
+      <File FileName="HAPortable/ChartValues.cs" Line="38" Column="27" />
+      <File FileName="HAPortable/HealthAssessmentReport_DRCJ1248066_441820.json" Line="55" Column="12" />
+      <File FileName="HAPortable/HAJsonManager.cs" Line="12" Column="33" />
+      <File FileName="HAPortable/ChartClasses/ChartEntities.cs" Line="1" Column="1" />
+      <File FileName="HAChartDroid/MainActivity.cs" Line="23" Column="13" />
+    </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>String.Format("{0:##.#}", yRanges[0].max)</Value>
+          <Value>string.Format("{0:##.#}", yRanges[i].max)</Value>
+          <Value>string.Format("{0:#.#}", int.Parse(yRanges[i].max))</Value>
+          <Value>decimal.TryParse(yRanges[i].max, System.Globalization.NumberStyles.Number, _nFormat, out result);</Value>
+          <Value>result</Value>
+          <Value>(decimal.Parse(yRanges[i].max)).ToString("##.#")</Value>
+          <Value>linesPoint.Count</Value>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/mishk/Projects/HAChartExample/HAChartExample/LineStripeChart.cs" relfile="HAChartExample/LineStripeChart.cs" line="385" column="1" />
+      <Breakpoint file="/Users/mishk/Projects/HAChartExample/HAChartExample/LineStripeChart.cs" relfile="HAChartExample/LineStripeChart.cs" line="36" column="16" />
+      <Breakpoint file="/Users/mishk/Projects/HAChartExample/HAPortable/LineStripeChart_Android.cs" relfile="HAPortable/LineStripeChart_Android.cs" line="174" column="1" />
+      <Breakpoint file="/Users/mishk/Projects/HAChartExample/HAPortable/LineStripeChart_Android.cs" relfile="HAPortable/LineStripeChart_Android.cs" line="56" column="1" />
+      <Breakpoint file="/Users/mishk/Projects/HAChartExample/HAChartDroid/Charts/LineStripeChart.cs" relfile="HAChartDroid/Charts/LineStripeChart.cs" line="24" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.HAChartExample PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.D035B5A6-987C-4B02-A099-DFBA5C73A8EE">
+    <MonoDevelop.MacDev.AppleDevelopmentTeam />
+  </MonoDevelop.Ide.ItemProperties.HAChartExample>
+  <MonoDevelop.Ide.ItemProperties.HAChartDroid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Android_Accelerated_Oreo" />
+  <MultiItemStartupConfigurations />
+</Properties>

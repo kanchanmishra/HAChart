@@ -1,0 +1,15 @@
+Function=xamarin_timezone_get_data
+	/Users/mishk/Projects/HAChartExample/HAChartExample/obj/iPhoneSimulator/Debug/mtouch-cache/Link/mscorlib.dll
+Function=xamarin_log
+	/Users/mishk/Projects/HAChartExample/HAChartExample/obj/iPhoneSimulator/Debug/mtouch-cache/Link/mscorlib.dll
+Function=xamarin_find_protocol_wrapper_type
+	/Users/mishk/Projects/HAChartExample/HAChartExample/obj/iPhoneSimulator/Debug/mtouch-cache/Link/Xamarin.iOS.dll
+Function=xamarin_get_block_descriptor
+	/Users/mishk/Projects/HAChartExample/HAChartExample/obj/iPhoneSimulator/Debug/mtouch-cache/Link/Xamarin.iOS.dll
+Function=UIApplicationMain
+	/Users/mishk/Projects/HAChartExample/HAChartExample/obj/iPhoneSimulator/Debug/mtouch-cache/Link/Xamarin.iOS.dll
+Function=mono_pmip
+Function=xamarin_dyn_objc_msgSend
+Function=xamarin_dyn_objc_msgSendSuper
+Function=xamarin_dyn_objc_msgSend_stret
+Function=xamarin_dyn_objc_msgSendSuper_stret

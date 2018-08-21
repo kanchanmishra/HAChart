@@ -1,0 +1,6 @@
+RemoveDynamicRegistrar:false
+/Users/mishk/Projects/HAChartExample/HAChartExample/bin/iPhoneSimulator/Debug/HAChartExample.app:/Users/mishk/Projects/HAChartExample/HAChartExample/obj/iPhoneSimulator/Debug/mtouch-cache/Link/HAChartExample.exe
+/Users/mishk/Projects/HAChartExample/HAChartExample/bin/iPhoneSimulator/Debug/HAChartExample.app:/Users/mishk/Projects/HAChartExample/HAChartExample/obj/iPhoneSimulator/Debug/mtouch-cache/Link/mscorlib.dll
+/Users/mishk/Projects/HAChartExample/HAChartExample/bin/iPhoneSimulator/Debug/HAChartExample.app:/Users/mishk/Projects/HAChartExample/HAChartExample/obj/iPhoneSimulator/Debug/mtouch-cache/Link/Xamarin.iOS.dll
+/Users/mishk/Projects/HAChartExample/HAChartExample/bin/iPhoneSimulator/Debug/HAChartExample.app:/Users/mishk/Projects/HAChartExample/HAChartExample/obj/iPhoneSimulator/Debug/mtouch-cache/Link/System.dll
+/Users/mishk/Projects/HAChartExample/HAChartExample/bin/iPhoneSimulator/Debug/HAChartExample.app:/Users/mishk/Projects/HAChartExample/HAChartExample/obj/iPhoneSimulator/Debug/mtouch-cache/Link/HAPortable.dll

@@ -1,0 +1,11 @@
+/Users/mishk/Projects/HAChartExample/HAChartExample/bin/iPhoneSimulator/Debug/HAChartExample.exe
+/Library/Frameworks/Xamarin.iOS.framework/Versions/11.12.0.4/lib/mono/Xamarin.iOS/mscorlib.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/11.12.0.4/lib/mono/Xamarin.iOS/../../64bits/Xamarin.iOS.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/11.12.0.4/lib/mono/Xamarin.iOS/System.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/11.12.0.4/lib/mono/Xamarin.iOS/Mono.Security.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/11.12.0.4/lib/mono/Xamarin.iOS/System.Xml.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/11.12.0.4/lib/mono/Xamarin.iOS/System.Core.dll
+/Users/mishk/Projects/HAChartExample/HAPortable/bin/Debug/HAPortable.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/11.12.0.4/lib/mono/Xamarin.iOS/Facades/System.Runtime.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/11.12.0.4/lib/mono/Xamarin.iOS/System.ComponentModel.Composition.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/11.12.0.4/lib/mono/Xamarin.iOS/Facades/System.Collections.dll
