@@ -10,9 +10,9 @@ using HAPortable;
 
 namespace HAChartExample
 {
-    public class LineStripeChart_iOS :  UIView
+    public class LineStripeChart_iOS : UIView
     {
-        
+
         string chartType = string.Empty;
         List<string> barcolors;
         List<string> barText;
@@ -25,13 +25,13 @@ namespace HAChartExample
         List<CGPoint> linesPoint;
 
         UIFont font1, font2;
-        int circleRadius;// = ChartValues.LineChartCircleRadius;
+        int circleRadius;
 
         int percentage;
         float baseValue = 0;
 
         CGRect BaseFrame;
-       
+
         public void SetChartType(string chartType)
         {
             this.chartType = chartType;
@@ -39,9 +39,9 @@ namespace HAChartExample
 
         public LineStripeChart_iOS(CGRect frame) : base(frame)
         {
-            
+
             BaseFrame = frame;
-           // InitializeGraphValue();
+            // InitializeGraphValue();
             this.BackgroundColor = UIColor.LightGray;
         }
 
@@ -49,109 +49,47 @@ namespace HAChartExample
 
         public void InitializeGraphValue()
         {
-            // assign values
-            var chartValues = new ChartValues(chartType);
 
-            barcolors = chartValues.LineChartBarcolors;
-            barText = chartValues.LineChartBarText;
-            xValues = chartValues.LineChartXValues;
-            legends = chartValues.LineChartLegends;
-            yValues = chartValues.LineChartYValues;
-            circleRadius = chartValues.LineChartCircleRadius;
-            baseValue = chartValues.BaseValue;
-            percentage = chartValues.LineChartPercentage;
-
-            linesRect = new List<CGRect>(xValues.Capacity);
-            //barRect = new StringBuilder(xValues.Capacity);
-            linesPoint = new List<CGPoint>(xValues.Capacity);
-            barRect = new List<CGRect>(xValues.Capacity);
-
-            font1 = UIFont.SystemFontOfSize(16);
-            font2 = UIFont.SystemFontOfSize(11);
-
-            PerformSelector(new ObjCRuntime.Selector("Animateline"), null, 1.0);
-               
-        }
-
-        [Export("Animateline")]
-        public void Animateline()
-        {
-            UIBezierPath path = new UIBezierPath();
-            if (linesPoint.Count > 1)
+            try
             {
-
-                CGPoint somepoint = new CGPoint(linesPoint[0]);
-
-                for (int i = 1; i < linesPoint.Count; i++)
+                if (!string.IsNullOrEmpty(chartType))
                 {
-                    CGPoint somepoint1 = new CGPoint(linesPoint[i]);
-                    path.LineWidth=1.5f;
+                    // assign charts values
+                    var chartValues = new ChartValues();
+                    var chartData = chartValues.SetChartValues(chartType);
+                    //will throw an exception on validation
+                    if (chartData.ValidateAll())
+                    {
+                        // assign values
 
-                    path.AddLineTo(somepoint1);
-                    //[path addLineToPoint:somepoint1];
+                        barcolors = chartData.BarColors;
+                        barText = chartData.BarText;
+                        xValues = chartData.XValues;
+                        legends = chartData.Legends;
+                        yValues = chartData.YValues;
+                        circleRadius = chartData.Radius;
+                        baseValue = chartData.BaseValue;
+                        percentage = chartData.Percentage;
+
+                        linesRect = new List<CGRect>(xValues.Capacity);
+                        linesPoint = new List<CGPoint>(xValues.Capacity);
+                        barRect = new List<CGRect>(barcolors.Capacity);
+
+                        font1 = UIFont.SystemFontOfSize(16);
+                        font2 = UIFont.SystemFontOfSize(11);
+
+                        //Commented as we are not using Animation for now
+                        // PerformSelector(new ObjCRuntime.Selector("Animateline"), null, 1.0);
+
+                    }
                 }
-
             }
-
-
-            CAShapeLayer pathLayer = new CAShapeLayer();
-            pathLayer.Frame = BaseFrame;
-            pathLayer.Path = path.CGPath;
-            pathLayer.StrokeColor = UIColor.White.CGColor;
-            pathLayer.FillColor = UIColor.Clear.CGColor;
-            pathLayer.LineWidth = 1.5f;
-            pathLayer.LineJoin = new NSString(CGLineJoin.Bevel.ToString()); // kCALineJoinBevel;
-           
-            //[self.layer addSublayer:pathLayer];
-            this.Layer.AddSublayer(pathLayer);
-
-            CABasicAnimation pathAnimation = new CABasicAnimation();//[CABasicAnimation animationWithKeyPath: @"strokeEnd"];
-            pathAnimation.Duration = 10.0;
-            //pathAnimation.From = (NSNumber)0.01f;
-            pathAnimation.To = (NSNumber)1.0f;
-            //[pathLayer addAnimation:pathAnimation forKey:@"strokeEnd"];
-
-            pathLayer.AddAnimation(pathAnimation, "strokeEnd");
-
-            for (int i = 0; i < xValues.Count; i++)
+            catch (System.Exception e)
             {
-                CGRect someRect = linesRect[i];
-                CAShapeLayer circleLayer = new CAShapeLayer();
-                // [circleLayer setPath:[[UIBezierPath bezierPathWithOvalInRect:someRect] CGPath]];
-                var b = UIBezierPath.FromOval(someRect);//  bezierPathWithOvalInRect;
-
-                circleLayer.Path = b.CGPath;
-                circleLayer.StrokeColor = UIColor.White.CGColor;
-                circleLayer.FillColor = UIColor.Blue.CGColor;
-                circleLayer.LineWidth = 1.5f;
-
-                // [self.layer addSublayer:circleLayer];
-
-                this.Layer.AddSublayer(circleLayer);
-
-                string text = xValues[i].ToString();
-                CGSize size = new CGSize(11, 11);  //; font2;
-
-                CATextLayer TextLayer = new CATextLayer();//[CATextLayer layer];
-                someRect.Y = someRect.Y + (size.Height / 2);
-                TextLayer.Frame = someRect;
-                TextLayer.String = text;
-                TextLayer.FontSize = 14;
-                TextLayer.ForegroundColor = UIColor.White.CGColor;
-                TextLayer.Wrapped = false;
-                //        TextLayer.position = CGPointMake(someRect.origin.x,
-                //                                         someRect.origin.y + (someRect.size.height -
-                //                                                          size.height) / 2);
-                TextLayer.TextAlignmentMode = CATextLayerAlignmentMode.Center; //kCAAlignmentCenter;
-
-                this.Layer.AddSublayer(TextLayer);
-                //[self.layer addSublayer:TextLayer];
-
-
+                throw e;
             }
 
         }
-
         public UIColor colorWithHexString(string hexString)
         {
             string colorString = hexString.Replace("#", "").ToUpper();
@@ -237,271 +175,363 @@ namespace HAChartExample
         // An empty implementation adversely affects performance during animation.
         public override void Draw(CGRect rect)
         {
+            if (barRect == null || barRect.Capacity == 0)
+                return;
 
-            InitializeGraphValue();
-            
-            //int padding = 20;
-            int padding = 2;
-            int contentWidth = int.Parse(rect.Size.Width.ToString()) - padding * 2;
-            int contentHeight = int.Parse(rect.Size.Height.ToString()) - padding * 2;
-
-            float boxHeight = 0;
-
-            int noOfBars = 4;
-
-            int textWidth = 20;   //get the height dynamically
-            int textHeight = 20;  //get the height dynamically
-
-
-            float fcontentWidth = contentWidth - textWidth;
-            float fcontentHeight = contentHeight - textHeight * 2;
-
-
-
-            float left = padding + textWidth * 2;
-            float top = padding * 2 + textHeight + (circleRadius * 3) + 5;
-            float right = fcontentWidth - left;
-            float bottom = fcontentHeight - top;
-
-            right = fcontentWidth;
-            //bottom = fcontentHeight;
-
-            CGRect rectGraph = CGRect.FromLTRB(left, top, right, bottom);
-
-
-            CGContext context = UIGraphics.GetCurrentContext();  // CGContextRef = UIGraphicsGetCurrentContext();
-
-            context.SetFillColor(UIColor.Green.CGColor);
-            context.FillRect(rectGraph);
-
-
-
-            noOfBars = barcolors.Count;
-
-           
-            float prevVal = baseValue;
-            float diffVal = float.Parse(yValues[noOfBars - 1]) - prevVal;
-
-            float boxHeight1 = 0;
-
-            barRect.Clear();
-            linesPoint.Clear();
-            // [barRect removeAllObjects];
-            // [linesPoint removeAllObjects];
-
-            for (int i = 0; i < noOfBars; i++)
+            try
             {
-                float cVal = float.Parse(yValues[i]) - prevVal;
 
-                boxHeight = (cVal * 100) / diffVal;
-                boxHeight = (float.Parse(rectGraph.Size.Height.ToString()) * boxHeight) / 100;
+                int padding = 0;
+                int contentWidth = int.Parse(rect.Size.Width.ToString()) - padding * 2;
+                int contentHeight = int.Parse(rect.Size.Height.ToString()) - padding * 2;
 
-                prevVal = float.Parse(yValues[i]);
+                float boxHeight = 0;
 
-                context.SetFillColor(this.colorWithHexString(barcolors[i]).CGColor);
-                //CGContextSetFillColorWithColor(context, [self colorWithHexString: [barcolors objectAtIndex:i]].CGColor);
+                int noOfBars = barcolors.Count;
 
-
-                CGRect tempBarRect = new CGRect(rectGraph.X, (rectGraph.Y + rectGraph.Size.Height) - boxHeight1 - boxHeight, rectGraph.Size.Width, boxHeight);
-
-                //NSLog(@"height=%f",boxHeight);
-                barRect.Add(tempBarRect);
-                //[barRect addObject: [NSValue valueWithCGRect:tempBarRect]];
-
-                context.FillRect(tempBarRect);
+                int textWidth = 20;   //get the height dynamically
+                int textHeight = 0;  //get the height dynamically
 
 
-                string text1 = barText[i];
-
-                CGSize size1 = text1.StringSize(font1);
-
-                CGRect r1 = new CGRect(tempBarRect.X + 10, tempBarRect.Y + tempBarRect.Size.Height / 2 - size1.Height / 2, size1.Width, size1.Height);
-
-                context.SetFillColor(UIColor.White.CGColor);
-                text1.DrawString(r1, font1, UILineBreakMode.Clip, UITextAlignment.Left);
-
-                //[text drawInRect: r withFont: font1 lineBreakMode: UILineBreakModeClip alignment:UITextAlignmentLeft];
-
-                r1 = new CGRect(tempBarRect.X, tempBarRect.Y, tempBarRect.Size.Width, 2);
-
-                context.FillRect(r1);
-                //Draw y values
-                text1 = yValues[i];
-                size1 = text1.StringSize(font1);
+                float fcontentWidth = contentWidth - textWidth;
+                float fcontentHeight = contentHeight - textHeight * 2;
 
 
 
-                r1 = new CGRect(tempBarRect.X - size1.Width - 5, tempBarRect.Y - size1.Height / 2, size1.Width, size1.Height);
-                context.SetFillColor(UIColor.Black.CGColor);
-                text1.DrawString(r1, font1, UILineBreakMode.Clip, UITextAlignment.Right);
+                float left = padding + textWidth * 2;
+                float top = padding * 2 + textHeight + (circleRadius * 3) + 5;
+                float right = fcontentWidth - left;
+                float bottom = fcontentHeight - top;
+
+                right = fcontentWidth;
+                //bottom = fcontentHeight;
+
+                CGRect rectGraph = CGRect.FromLTRB(left, top, right, bottom);
 
 
-                boxHeight1 += boxHeight;
+                CGContext context = UIGraphics.GetCurrentContext();  // CGContextRef = UIGraphicsGetCurrentContext();
 
-
-
-            }
-            //Draw bottom text
-
-            string text = baseValue.ToString();// [NSString stringWithFormat: @"%.2f", baseValue];
-
-            CGSize size = text.StringSize(font1);
-
-            CGRect r = new CGRect(rectGraph.X - size.Width - 5, rectGraph.Y + rectGraph.Size.Height - size.Height, size.Width, size.Height);
-
-            text.DrawString(r, font1, UILineBreakMode.Clip, UITextAlignment.Right);
+                context.SetFillColor(UIColor.Green.CGColor);
+                context.FillRect(rectGraph);
 
 
 
-
-            //Draw x & y axis border
-            r = new CGRect(rectGraph.X, rectGraph.Y, 2, rectGraph.Size.Height);
-            context.FillRect(r);
-
-            r = new CGRect(rectGraph.X, rectGraph.Y + rectGraph.Size.Height - 2, rectGraph.Size.Width, 2);
-            context.FillRect(r);
-
-            int horizontalpadding = 20;
-
-            int pointdistance = (int)(rectGraph.Size.Width - horizontalpadding * 2) / (xValues.Count + 1);
+                noOfBars = barcolors.Count;
 
 
-            //Console.WriteLine(string.Format("box width ={0}", rectGraph.Size.Width.ToString()));
+                float prevVal = baseValue;
+                float diffVal = float.Parse(yValues[noOfBars - 1]) - prevVal;
 
-            // Console.WriteLine(string.Format("box width ={0}", pointdistance));
+                float boxHeight1 = 0;
 
+                barRect.Clear();
+                linesPoint.Clear();
 
-
-            CGPoint lastPoint;
-
-            linesRect.Clear();
-            var drawLines = new List<CGPoint>();
-            // draw Line and x axis
-            for (int i = 0; i < xValues.Count; i++)
-            {
-                context.SetFillColor(UIColor.Black.CGColor);// CGContextSetFillColorWithColor(context, UIColor.blackColor.CGColor);
-
-                float currentValue = float.Parse(xValues[i]);
-
-                int quadrant = this.getQuadrant(currentValue);//[self getQuadrant: currentValue];
-
-                float tempvalue = 0;
-                int percentage = 0;
-                float difference = 0;
-
-                if (quadrant > 0)
+                // draw bars/Strips
+                for (int i = 0; i < noOfBars; i++)
                 {
-                    tempvalue = currentValue - float.Parse(yValues[quadrant - 1]);
-                    difference = float.Parse(yValues[quadrant]) - float.Parse(yValues[quadrant - 1]);
-                    percentage = (int)((tempvalue * 100) / difference);
+                    float cVal = float.Parse(yValues[i]) - prevVal;
+
+                    boxHeight = (cVal * 100) / diffVal;
+                    boxHeight = (float.Parse(rectGraph.Size.Height.ToString()) * boxHeight) / 100;
+
+                    prevVal = float.Parse(yValues[i]);
+
+                    context.SetFillColor(this.colorWithHexString(barcolors[i]).CGColor);
+                    //CGContextSetFillColorWithColor(context, [self colorWithHexString: [barcolors objectAtIndex:i]].CGColor);
+
+
+                    CGRect tempBarRect = new CGRect(rectGraph.X, (rectGraph.Y + rectGraph.Size.Height) - boxHeight1 - boxHeight, rectGraph.Size.Width, boxHeight);
+
+                    //NSLog(@"height=%f",boxHeight);
+                    barRect.Add(tempBarRect);
+                    //[barRect addObject: [NSValue valueWithCGRect:tempBarRect]];
+
+                    context.FillRect(tempBarRect);
+
+
+                    string text1 = barText[i];
+
+                    CGSize size1 = text1.StringSize(font1);
+
+                    CGRect r1 = new CGRect(tempBarRect.X + 10, tempBarRect.Y + tempBarRect.Size.Height / 2 - size1.Height / 2, size1.Width, size1.Height);
+
+                    context.SetFillColor(UIColor.White.CGColor);
+                    text1.DrawString(r1, font1, UILineBreakMode.Clip, UITextAlignment.Left);
+
+                    //[text drawInRect: r withFont: font1 lineBreakMode: UILineBreakModeClip alignment:UITextAlignmentLeft];
+
+                    r1 = new CGRect(tempBarRect.X, tempBarRect.Y, tempBarRect.Size.Width, 2);
+
+                    context.FillRect(r1);
+                    //Draw y values
+                    text1 = yValues[i];
+                    size1 = text1.StringSize(font1);
+
+
+
+                    r1 = new CGRect(tempBarRect.X - size1.Width - 5, tempBarRect.Y - size1.Height / 2, size1.Width, size1.Height);
+                    context.SetFillColor(UIColor.Black.CGColor);
+                    text1.DrawString(r1, font1, UILineBreakMode.Clip, UITextAlignment.Right);
+
+
+                    boxHeight1 += boxHeight;
+
+
 
                 }
-                else
+                //Draw bottom text
+
+                string text = baseValue.ToString();// [NSString stringWithFormat: @"%.2f", baseValue];
+
+                CGSize size = text.StringSize(font1);
+
+                CGRect r = new CGRect(rectGraph.X - size.Width - 5, rectGraph.Y + rectGraph.Size.Height - size.Height, size.Width, size.Height);
+
+                text.DrawString(r, font1, UILineBreakMode.Clip, UITextAlignment.Right);
+
+
+
+
+                //Draw x & y axis border
+                r = new CGRect(rectGraph.X, rectGraph.Y, 2, rectGraph.Size.Height);
+                context.FillRect(r);
+
+                r = new CGRect(rectGraph.X, rectGraph.Y + rectGraph.Size.Height - 2, rectGraph.Size.Width, 2);
+                context.FillRect(r);
+
+                int horizontalpadding = 20;
+
+                int pointdistance = (int)(rectGraph.Size.Width - horizontalpadding * 2) / (xValues.Count + 1);
+
+
+
+                CGPoint lastPoint = new CGPoint();
+
+                linesRect.Clear();
+                var drawLines = new List<CGPoint>();
+                // draw Line and x axis
+                for (int i = 0; i < xValues.Count; i++)
                 {
-                    tempvalue = currentValue - baseValue;
-                    difference = float.Parse(yValues[quadrant]) - baseValue;
-                    percentage = (int)((tempvalue * 100) / difference);
+                    context.SetFillColor(UIColor.Black.CGColor);// CGContextSetFillColorWithColor(context, UIColor.blackColor.CGColor);
+
+                    float currentValue = float.Parse(xValues[i]);
+
+                    int quadrant = this.getQuadrant(currentValue);//[self getQuadrant: currentValue];
+
+                    float tempvalue = 0;
+                    int percentage = 0;
+                    float difference = 0;
+
+                    if (quadrant > 0)
+                    {
+                        tempvalue = currentValue - float.Parse(yValues[quadrant - 1]);
+                        difference = float.Parse(yValues[quadrant]) - float.Parse(yValues[quadrant - 1]);
+                        percentage = (int)((tempvalue * 100) / difference);
+
+                    }
+                    else
+                    {
+                        tempvalue = currentValue - baseValue;
+                        difference = float.Parse(yValues[quadrant]) - baseValue;
+                        percentage = (int)((tempvalue * 100) / difference);
+
+                    }
+
+                    if (percentage > 100)
+                        percentage = 100 + circleRadius;
+
+                    ////calculate box height
+                    //float ycenterpoint = 0;
+                    //if (barRect.Count - 1 >= i)
+                    //    ycenterpoint = (barRect[i].Height() * percentage) / 100;
+                    //else
+                        //ycenterpoint = (barRect[i - 1].Height() * percentage) / 100;
+
+
+                    float ycenterpoint = (boxHeight * percentage) / 100;
+
+                    CGRect someRect = new CGRect(barRect[quadrant].X, barRect[quadrant].Y, barRect[quadrant].Width, barRect[quadrant].Height);
+
+                    r = new CGRect(pointdistance * (i + 2), someRect.Y + someRect.Size.Height - ycenterpoint, 2, ycenterpoint);
+
+                    context.SetFillColor(UIColor.LightGray.CGColor);
+                    context.SetStrokeColor(0, 0, 0, 0.5f);
+                    context.SetLineWidth(1);
+                    context.BeginPath();
+                    context.MoveTo(pointdistance * (i + 2), someRect.Y + someRect.Size.Height - ycenterpoint);
+                    context.AddLineToPoint(pointdistance * (i + 2), rectGraph.Y + rectGraph.Size.Height);
+
+
+                    context.StrokePath();
+
+
+                    if (i == 0)
+                    {
+                        lastPoint = new CGPoint(pointdistance * (i + 2), someRect.Y + someRect.Size.Height - ycenterpoint);
+                        //CGPointMake(pointdistance* (i + 2),someRect.origin.y+someRect.size.height - ycenterpoint);
+                    }
+                    else
+                    {
+
+                        context.SetStrokeColor(UIColor.White.CGColor);
+                        context.SetFillColor(UIColor.White.CGColor);
+                        context.BeginPath();
+                        context.MoveTo(lastPoint.X, lastPoint.Y);
+                        context.AddLineToPoint(pointdistance * (i + 2), someRect.Y + someRect.Size.Height - ycenterpoint);
+                        context.StrokePath();
+
+                        lastPoint = new CGPoint(pointdistance * (i + 2), someRect.Y + someRect.Size.Height - ycenterpoint);
+
+                    }
+
+                    //lastPoint = new CGPoint(pointdistance * (i + 2), someRect.Y + someRect.Size.Height - ycenterpoint);
+
+
+                    linesPoint.Add(lastPoint);
+                    linesRect.Add(new CGRect(pointdistance * (i + 2) - circleRadius / 2, someRect.Y + someRect.Size.Height - ycenterpoint - circleRadius / 2, circleRadius, circleRadius));
+
 
                 }
 
-                if (percentage > 100)
-                    percentage = 100 + circleRadius;
-
-                float ycenterpoint = (boxHeight * percentage) / 100;
-
-                CGRect someRect = new CGRect(barRect[quadrant].X, barRect[quadrant].Y, barRect[quadrant].Width, barRect[quadrant].Height);
-
-                r = new CGRect(pointdistance * (i + 2), someRect.Y + someRect.Size.Height - ycenterpoint, 2, ycenterpoint);
-
-                //CGContextFillRect (context, r);
-                context.SetFillColor(UIColor.LightGray.CGColor);
-                context.SetStrokeColor(0, 0, 0, 0.5f);
-                context.SetLineWidth(1);
+                // draw legend
                 context.BeginPath();
-                context.MoveTo(pointdistance * (i + 2), someRect.Y + someRect.Size.Height - ycenterpoint);
-                context.AddLineToPoint(pointdistance * (i + 2), rectGraph.Y + rectGraph.Size.Height);
+                context.SetFillColor(colorWithHexString("#409bd6").CGColor);
+                context.SetLineWidth(2);
+                context.SetStrokeColor(1.0f, 1.0f, 1.0f, 1.0f);
 
+                for (int i = 0; i < xValues.Count; i++)
+                {
+
+                    CGRect someRect = linesRect[i];
+                    context.FillEllipseInRect(someRect);
+                    context.StrokeEllipseInRect(someRect);
+
+                }
 
                 context.StrokePath();
-
-                if (i == 0)
-                {
-                    lastPoint = new CGPoint(pointdistance * (i + 2), someRect.Y + someRect.Size.Height - ycenterpoint);
-                    //CGPointMake(pointdistance* (i + 2),someRect.origin.y+someRect.size.height - ycenterpoint);
-                }
-
-                else
-                {
-                    lastPoint = new CGPoint(pointdistance * (i + 2), someRect.Y + someRect.Size.Height - ycenterpoint);
-                }
-                linesPoint.Add(lastPoint);
-                // add lines between points
-                if (i > 0)
-                {
-                    drawLines.Add(linesPoint[i - 1]);
-                    drawLines.Add(linesPoint[i]);
-                    context.SetStrokeColor(UIColor.White.CGColor);
-                
-                    context.AddLines(drawLines.ToArray());
-                    drawLines.Clear();
-                }
-
-
-                context.StrokePath();
-
-
-                linesRect.Add(new CGRect(pointdistance * (i + 2) - circleRadius / 2, someRect.Y + someRect.Size.Height - ycenterpoint - circleRadius / 2, circleRadius, circleRadius));
-
-
-            }
-
-            // draw legend
-            context.BeginPath();
-            context.SetFillColor(colorWithHexString("#409bd6").CGColor);
-            context.SetLineWidth(2);
-            context.SetStrokeColor(1.0f, 1.0f, 1.0f, 1.0f);
-
-            for (int i = 0; i < xValues.Count; i++)
-            {
-
-                CGRect someRect = linesRect[i];
-                context.AddEllipseInRect(someRect);
-                context.StrokeEllipseInRect(someRect);
-
-            }
-
-            context.StrokePath();
-            context.SetFillColor(UIColor.Black.CGColor);
-            context.FillRect(new CGRect(rectGraph.X, rectGraph.Y + 2, 2, rectGraph.Size.Height - 2));
-            context.FillRect(new CGRect(rectGraph.X, rectGraph.Y + rectGraph.Size.Height - 2, rectGraph.Size.Width, 2));
-            context.SetFillColor(UIColor.Black.CGColor);
-
-            for (int i = 0; i < xValues.Count; i++)
-            {
-
-                context.SetFillColor(UIColor.White.CGColor);
-
-                CGRect rect1 = linesRect[i];
-
-                string text1 = xValues[i];
-                CGSize size1 = text1.StringSize(font2);
-
-                CGRect r1 = new CGRect(rect1.X, rect1.Y + (rect1.Size.Height - size1.Height) / 2, rect1.Size.Width, size1.Height);
-                text1.DrawString(r1, font2, UILineBreakMode.Clip, UITextAlignment.Center);
-
-                text1 = legends[i];
-                size1 = text1.StringSize(font1);
-                r1 = new CGRect((rect1.X + circleRadius / 2) - size1.Width / 2, rectGraph.Y + rectGraph.Size.Height, size1.Width, size1.Height);
                 context.SetFillColor(UIColor.Black.CGColor);
-                text1.DrawString(r1, font1, UILineBreakMode.Clip, UITextAlignment.Center);
+                context.FillRect(new CGRect(rectGraph.X, rectGraph.Y + 2, 2, rectGraph.Size.Height - 2));
+                context.FillRect(new CGRect(rectGraph.X, rectGraph.Y + rectGraph.Size.Height - 2, rectGraph.Size.Width, 2));
+                context.SetFillColor(UIColor.Black.CGColor);
+
+                // Draw X values
+                for (int i = 0; i < xValues.Count; i++)
+                {
+
+                    context.SetFillColor(UIColor.White.CGColor);
+
+                    CGRect rect1 = linesRect[i];
+
+                    string text1 = xValues[i];
+                    CGSize size1 = text1.StringSize(font2);
+
+                    CGRect r1 = new CGRect(rect1.X, rect1.Y + (rect1.Size.Height - size1.Height) / 2, rect1.Size.Width, size1.Height);
+                    text1.DrawString(r1, font2, UILineBreakMode.Clip, UITextAlignment.Center);
+
+                    text1 = legends[i];
+                    size1 = text1.StringSize(font1);
+                    r1 = new CGRect((rect1.X + circleRadius / 2) - size1.Width / 2, rectGraph.Y + rectGraph.Size.Height, size1.Width, size1.Height);
+                    context.SetFillColor(UIColor.Black.CGColor);
+                    text1.DrawString(r1, font1, UILineBreakMode.Clip, UITextAlignment.Center);
+
+
+                }
+
+            }
+            catch (System.Exception e)
+            {
+                throw new System.Exception("Withdrawal failed", e);
+            }
+        }
+
+
+        #region Animate Line
+
+        /*
+        [Export("Animateline")]
+        public void Animateline()
+        {
+            UIBezierPath path = new UIBezierPath();
+            if (linesPoint.Count > 1)
+            {
+
+                CGPoint somepoint = new CGPoint(linesPoint[0]);
+                //[path moveToPoint:somepoint];
+
+                path.MoveTo(somepoint);
+                for (int i = 1; i < linesPoint.Count; i++)
+                {
+                    CGPoint somepoint1 = new CGPoint(linesPoint[i]);
+
+                    path.AddLineTo(somepoint1);
+                    //[path addLineToPoint:somepoint1];
+                }
+
+            }
+
+
+            CAShapeLayer pathLayer = new CAShapeLayer();
+            pathLayer.Frame = this.Bounds; 
+            pathLayer.Path = path.CGPath;
+            pathLayer.StrokeColor = UIColor.White.CGColor;
+            pathLayer.FillColor = UIColor.Clear.CGColor;
+            pathLayer.LineWidth = 1.5f;
+            pathLayer.LineJoin = new NSString(CGLineJoin.Bevel.ToString()); // kCALineJoinBevel;
+           
+            //[self.layer addSublayer:pathLayer];
+            this.Layer.AddSublayer(pathLayer);
+
+            CABasicAnimation pathAnimation = new CABasicAnimation();//[CABasicAnimation animationWithKeyPath: @"strokeEnd"];
+            pathAnimation.Duration = 1.0;
+            pathAnimation.From = (NSNumber)0.01f;
+            pathAnimation.To = (NSNumber)1.0f;
+          
+            pathLayer.AddAnimation(pathAnimation, "strokeEnd");
+
+            for (int i = 0; i < xValues.Count; i++)
+            {
+                CGRect someRect = linesRect[i];
+                CAShapeLayer circleLayer = new CAShapeLayer();
+                // [circleLayer setPath:[[UIBezierPath bezierPathWithOvalInRect:someRect] CGPath]];
+                var b = UIBezierPath.FromOval(someRect);//  bezierPathWithOvalInRect;
+
+                circleLayer.Path = b.CGPath;
+                circleLayer.StrokeColor = UIColor.White.CGColor;
+                circleLayer.FillColor = colorWithHexString("#409bd6").CGColor;
+                circleLayer.LineWidth = 1.5f;
+
+                // [self.layer addSublayer:circleLayer];
+
+                this.Layer.AddSublayer(circleLayer);
+
+                string text = xValues[i].ToString();
+                CGSize size = new CGSize(11, 11);  //; font2;
+
+                CATextLayer TextLayer = new CATextLayer();//[CATextLayer layer];
+                someRect.Y = someRect.Y + (size.Height / 2);
+                TextLayer.Frame = someRect;
+                TextLayer.String = text;
+                TextLayer.FontSize = 12;
+                TextLayer.ForegroundColor = UIColor.White.CGColor;
+                TextLayer.Wrapped = false;
+                //        TextLayer.position = CGPointMake(someRect.origin.x,
+                //                                         someRect.origin.y + (someRect.size.height -
+                //                                                          size.height) / 2);
+                TextLayer.TextAlignmentMode = CATextLayerAlignmentMode.Center; //kCAAlignmentCenter;
+
+                this.Layer.AddSublayer(TextLayer);
+                //[self.layer addSublayer:TextLayer];
 
 
             }
 
         }
+        */
+        #endregion
     }
 }
 
 
- 
+
 

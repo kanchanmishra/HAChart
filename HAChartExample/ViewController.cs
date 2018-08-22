@@ -17,11 +17,23 @@ namespace HAChartExample
             base.ViewDidLoad();
             // Perform any additional setup after loading the view, typically from a nib.
 
-            var lineStripeChart = new LineStripeChart_iOS(ChartView.Frame);
-            //lineStripeChart.SetChartType(ChartType.bmi.ToString());
-            lineStripeChart.SetChartType(ChartType.body_fat.ToString());
-            ChartView.Add(lineStripeChart);
-          
+            try
+            {
+                var lineStripeChart = new LineStripeChart_iOS(ChartView.Frame);
+                //lineStripeChart.SetChartType(ChartType.bmi.ToString());
+                lineStripeChart.SetChartType(ChartType.body_fat.ToString());
+                lineStripeChart.InitializeGraphValue();
+                ChartView.Add(lineStripeChart);
+            }
+            catch (Exception e)
+            {
+                ChartView.Hidden =  true;
+                lblError.Text = string.Format("Inadequate Chart Data: {0}", e.Message);
+            }
+            finally
+            {
+
+            }
         }
 
         public override void DidReceiveMemoryWarning()

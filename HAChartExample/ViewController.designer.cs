@@ -17,11 +17,20 @@ namespace HAChartExample
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView ChartView { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblError { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
             if (ChartView != null) {
                 ChartView.Dispose ();
                 ChartView = null;
+            }
+
+            if (lblError != null) {
+                lblError.Dispose ();
+                lblError = null;
             }
         }
     }
