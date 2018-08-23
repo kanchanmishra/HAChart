@@ -196,8 +196,6 @@ namespace HAChartExample
                 float fcontentWidth = contentWidth - textWidth;
                 float fcontentHeight = contentHeight - textHeight * 2;
 
-
-
                 float left = padding + textWidth * 2;
                 float top = padding * 2 + textHeight + (circleRadius * 3) + 5;
                 float right = fcontentWidth - left;
@@ -209,15 +207,12 @@ namespace HAChartExample
                 CGRect rectGraph = CGRect.FromLTRB(left, top, right, bottom);
 
 
-                CGContext context = UIGraphics.GetCurrentContext();  // CGContextRef = UIGraphicsGetCurrentContext();
+                CGContext context = UIGraphics.GetCurrentContext();  
 
                 context.SetFillColor(UIColor.Green.CGColor);
                 context.FillRect(rectGraph);
 
-
-
                 noOfBars = barcolors.Count;
-
 
                 float prevVal = baseValue;
                 float diffVal = float.Parse(yValues[noOfBars - 1]) - prevVal;
@@ -237,16 +232,12 @@ namespace HAChartExample
 
                     prevVal = float.Parse(yValues[i]);
 
-                    context.SetFillColor(this.colorWithHexString(barcolors[i]).CGColor);
-                    //CGContextSetFillColorWithColor(context, [self colorWithHexString: [barcolors objectAtIndex:i]].CGColor);
-
+                    context.SetFillColor(this.colorWithHexString(barcolors[i]).CGColor);                    
 
                     CGRect tempBarRect = new CGRect(rectGraph.X, (rectGraph.Y + rectGraph.Size.Height) - boxHeight1 - boxHeight, rectGraph.Size.Width, boxHeight);
 
-                    //NSLog(@"height=%f",boxHeight);
                     barRect.Add(tempBarRect);
-                    //[barRect addObject: [NSValue valueWithCGRect:tempBarRect]];
-
+                   
                     context.FillRect(tempBarRect);
 
 
@@ -259,8 +250,7 @@ namespace HAChartExample
                     context.SetFillColor(UIColor.White.CGColor);
                     text1.DrawString(r1, font1, UILineBreakMode.Clip, UITextAlignment.Left);
 
-                    //[text drawInRect: r withFont: font1 lineBreakMode: UILineBreakModeClip alignment:UITextAlignmentLeft];
-
+                   
                     r1 = new CGRect(tempBarRect.X, tempBarRect.Y, tempBarRect.Size.Width, 2);
 
                     context.FillRect(r1);
@@ -268,21 +258,15 @@ namespace HAChartExample
                     text1 = yValues[i];
                     size1 = text1.StringSize(font1);
 
-
-
                     r1 = new CGRect(tempBarRect.X - size1.Width - 5, tempBarRect.Y - size1.Height / 2, size1.Width, size1.Height);
                     context.SetFillColor(UIColor.Black.CGColor);
                     text1.DrawString(r1, font1, UILineBreakMode.Clip, UITextAlignment.Right);
 
-
                     boxHeight1 += boxHeight;
-
-
-
                 }
                 //Draw bottom text
 
-                string text = baseValue.ToString();// [NSString stringWithFormat: @"%.2f", baseValue];
+                string text = baseValue.ToString();
 
                 CGSize size = text.StringSize(font1);
 
@@ -313,11 +297,11 @@ namespace HAChartExample
                 // draw Line and x axis
                 for (int i = 0; i < xValues.Count; i++)
                 {
-                    context.SetFillColor(UIColor.Black.CGColor);// CGContextSetFillColorWithColor(context, UIColor.blackColor.CGColor);
+                    context.SetFillColor(UIColor.Black.CGColor);
 
                     float currentValue = float.Parse(xValues[i]);
 
-                    int quadrant = this.getQuadrant(currentValue);//[self getQuadrant: currentValue];
+                    int quadrant = this.getQuadrant(currentValue);
 
                     float tempvalue = 0;
                     int percentage = 0;
@@ -340,14 +324,7 @@ namespace HAChartExample
 
                     if (percentage > 100)
                         percentage = 100 + circleRadius;
-
-                    ////calculate box height
-                    //float ycenterpoint = 0;
-                    //if (barRect.Count - 1 >= i)
-                    //    ycenterpoint = (barRect[i].Height() * percentage) / 100;
-                    //else
-                        //ycenterpoint = (barRect[i - 1].Height() * percentage) / 100;
-
+                    
 
                     float ycenterpoint = (boxHeight * percentage) / 100;
 
@@ -369,7 +346,6 @@ namespace HAChartExample
                     if (i == 0)
                     {
                         lastPoint = new CGPoint(pointdistance * (i + 2), someRect.Y + someRect.Size.Height - ycenterpoint);
-                        //CGPointMake(pointdistance* (i + 2),someRect.origin.y+someRect.size.height - ycenterpoint);
                     }
                     else
                     {
@@ -384,9 +360,6 @@ namespace HAChartExample
                         lastPoint = new CGPoint(pointdistance * (i + 2), someRect.Y + someRect.Size.Height - ycenterpoint);
 
                     }
-
-                    //lastPoint = new CGPoint(pointdistance * (i + 2), someRect.Y + someRect.Size.Height - ycenterpoint);
-
 
                     linesPoint.Add(lastPoint);
                     linesRect.Add(new CGRect(pointdistance * (i + 2) - circleRadius / 2, someRect.Y + someRect.Size.Height - ycenterpoint - circleRadius / 2, circleRadius, circleRadius));
@@ -441,7 +414,7 @@ namespace HAChartExample
             }
             catch (System.Exception e)
             {
-                throw new System.Exception("Withdrawal failed", e);
+                throw new System.Exception("Draw failed", e);
             }
         }
 
